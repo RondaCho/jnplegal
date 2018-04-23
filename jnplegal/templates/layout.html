@@ -1,0 +1,70 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5">
+    <title>{% block title %} JNP Legal Service Group {% endblock %}</title>
+    <!-- 기본 bootstrap -->
+    {# <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> #}
+    <!-- bootrtrap: cosmo theme -->
+    {# <link rel="stylesheet" href= "//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css"/> #}
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootswatch/4.1.0/yeti/bootstrap.min.css"/>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static "navbar.css" %}" rel="stylesheet">
+    <link href="{% static "sticky-footer.css" %}" rel="stylesheet">
+    
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+        <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal"><a class="nav-link text-dark" href="{% url "root"%}"><img src="{% static "logo.jpg" %}" width="20px" height="20px"/> JNP 합동법률사무소 <span class="sr-only">(current)</span></a></h5>
+            
+            <a class="btn btn-outline" href="#">Login</a>
+            <a class="btn btn-outline-primary" href="#">Join</a>
+          </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+          
+                <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">함께하는 변호사</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{%url "notice:post_list"%}">소식/자료</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">사무소 소개</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdown08">
+                        <a class="dropdown-item" href="#">개요 및 비전</a>
+                        <a class="dropdown-item" href="#">사무소 위치</a>
+                        <a class="dropdown-item" href="#">Join Us!</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="footer">
+            <div class="container">
+              <span class="text-muted"<p>&copy; 2018 JNP Legal Service Group, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p></span>
+            </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
