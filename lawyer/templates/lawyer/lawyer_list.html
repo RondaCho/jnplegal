@@ -1,0 +1,67 @@
+{% extends "lawyer/layout.html" %}
+
+{% block style %}
+<style>
+     .container {max-width: 80%;}
+</style>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load imagekit %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url "root" %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lawyers</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="row">
+            <div class="card" style="width: 250px;">
+                <img src="{% static "logo.jpg" %}" height=333 width=250 />
+            <div class="card-body">
+                <h5 class="card-title">JP legal service group의 변호사는 바로 당신입니다!</h5>
+                    <p class="card-text">문의처 : 02-780-5610</p>
+                    <a href="#" class="btn btn-primary ">Join JP Legal Service Group &raquo;</a>
+                </div>
+            </div>  
+        {% for lawyer in lawyer_list %}
+                <div class="card" style="width: 250px;">
+                    {% if lawyer.profile_image %}
+                        {% generateimage "imagekit:thumbnail" source=lawyer.profile_image width=250 height=333 as thumb %}
+                        <img src="{{ lawyer.profile_image.url }}" height="{{ thumb.height }}" width="{{ thumb.width }}"/>
+                    {% else %}
+                        <img class="card-img-top" src="{% static "logo.jpg" %}" alt="Card image cap">
+                    {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ lawyer.name }} <small>{{ lawyer.name_en}}</small></h5>
+                    <p class="card-text">E : {{lawyer.email_address}} <br> P : {{lawyer.phone}} <br>
+                    {% if lawyer.fax %} 
+                        F : {{lawyer.fax}} </p>
+                    {% endif %}
+                    <br>
+                    <a href="{% url "lawyer:lawyer_detail" lawyer.unique_url %}" class="btn btn-info ">변호사 <strong>{{lawyer.name}}</strong> 페이지 &raquo;</a>
+                </div>
+                </div>   
+        {% endfor %}
+        <div class="card" style="width: 250px;">
+                <img src="{% static "logo.jpg" %}" height=333 width=250 />
+            <div class="card-body">
+                <h5 class="card-title">JP legal service group의 다음 변호사는 바로 당신입니다!</h5>
+                    <p class="card-text">문의처 : 02-780-5610</p>
+                    <a href="#" class="btn btn-primary ">Join JP Legal Service Group &raquo;</a>
+                </div>
+        </div>  
+        <div class="card" style="width: 250px;">
+                <img src="{% static "logo.jpg" %}" height=333 width=250 />
+            <div class="card-body">
+                <h5 class="card-title">JP legal service group의 다음 변호사는 바로 당신입니다!</h5>
+                    <p class="card-text">문의처 : 02-780-5610</p>
+                    <a href="#" class="btn btn-primary ">Join JP Legal Service Group &raquo;</a>
+            </div>
+        </div>  
+    </div>
+</div>
+
+{% endblock %}
